@@ -1,0 +1,19 @@
+[
+	{
+		"name": "RWCap-solver v2.1",
+		"descript": "Newest version of RWCap.",
+		"url": "file/rwcap-2.1.tar.gz",
+		"doc": 1
+	},
+	{
+		"name": "TechGFT",
+		"descript": "Process Technology based Green's Function Table generator.",
+		"url": "file/techGFT.tar",
+		"doc": 1
+	},
+	{
+		"name": "Cases & GFTs",
+		"descript": "Cases and GFTs used in examples.",
+		"url": "file/case_tables.tar.gz"
+	}
+]

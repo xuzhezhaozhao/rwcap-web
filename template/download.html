@@ -1,0 +1,18 @@
+
+<div class="container" ng-controller="DownloadCtrl">
+	<div class="page-header">
+		<h1>Download</h1>
+		<p class="lead">Download the RWCap-sovler and related files. </p>
+		<p> The softwares on this page can be used only for research purpose. Copyright and all rights therein are retained by authors or by other copyright holders. For any question, please contact Dr. Wenjian Yu.</p>
+	</div>
+
+	<div ng-repeat="d in downloads">
+		<h3>{{d.name}}</h3>
+		<p>{{d.descript}}
+			&nbsp;&nbsp;&nbsp; <a ng-href="{{d.url}}"> download </a>
+			&nbsp;&nbsp;&nbsp; <a ng-if="d.log" href="#/document"> change log </a> 
+			&nbsp;&nbsp;&nbsp; <a ng-if="d.doc" href="#/document"> document </a>
+		</p>
+	</div>
+
+</div>
