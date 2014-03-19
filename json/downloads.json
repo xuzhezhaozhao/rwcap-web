@@ -12,8 +12,8 @@
 		"doc": 1
 	},
 	{
-		"name": "Cases & GFTs",
-		"descript": "Cases and GFTs used in examples.",
+		"name": "Case File",
+		"descript": "Case Files used in examples.",
 		"url": "file/case_tables.tar.gz"
 	}
 ]

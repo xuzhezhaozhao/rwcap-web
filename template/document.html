@@ -13,7 +13,6 @@
 			<div class="row" id="docs">
 				<div class="page-header" ng-repeat="d in docs" id="{{d.id}}" spied>
 					<h1>{{d.title}}</h1>
-					<p ng-if="d.lead" class="lead">{{d.lead}}<br/></p>
 					<div ng-include="templates(d.id)">
 					</div>
 				</div>

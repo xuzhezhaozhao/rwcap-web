@@ -1,0 +1,129 @@
+
+<p>The following is the grammer of input file. You may want to see some <a href="#/examples">examples</a> first.</p>
+<pre><code class="yacc">Cap3DFile -> "&lt;cap3d&gt;" Window Mediums Condutors Tasks "&lt;/cap3d&gt;"
+
+Window -> "&lt;window&gt;" "v1" Vector3 "v2" Vector3 Boundary "&lt;/window&gt;"
+       -> &lt;empty&gt;
+
+Vector3 -> ( NUMBER , NUMBER , NUMBER )
+
+Vector2 -> ( NUMBER , NUMBER )
+
+Boundary -> "dirichlet"
+         -> "neumann"
+         -> &lt;empty&gt;
+
+Mediums -> Medium Mediums
+        -> &lt;empty&gt;
+
+Medium -> "&lt;medium&gt;" IgnoredName MediumBlock "diel" NUMBER "&lt;/medium&gt;"
+
+IgnoredName -> Name
+            -> &lt;empty&gt;
+
+Name -> "name" NAME
+
+MediumBlock -> "&lt;block&gt;" IgnoredName Cuboid "&lt;/block&gt;"
+
+Condutors -> Conductor Conductors
+          -> &lt;empty&gt;
+
+Conductor -> "&lt;conductor&gt;" Name Blocks Resistivity "&lt;/conductor&gt;"
+
+Blocks -> Blocks Block
+       -> &lt;empty&gt;
+
+Block -> "&lt;block&gt;" Name BlockShap Resistivity "&lt;/block&gt;"
+
+BlockShap -> Cuboid
+          -> Cylinder
+          -> Prism
+
+Cuboid -> "basepoint" Vector3 "v1" Vector3 "v2" Vector3 "hvector" Vector3
+
+Cylinder -> "basepoint" Vector3 "radius" NUMBER "height" NUMBER
+
+Prism -> Cuboid Coord
+
+Coord -> "&lt;coord&gt;" Vectors "&lt;/coord&gt;"
+
+Vectors -> Vector2 Vectors
+        -> &lt;empty&gt;
+
+Resistivity -> "rho" NUMBER
+            -> &lt;empty&gt;
+
+Tasks -> Task Tasks
+      -> &lt;empty&gt;
+
+Task -> "&lt;task&gt;" "&lt;capacitance&gt;" TaskName "&lt;/capacitance&gt;" "&lt;/task&gt;"
+
+TaskName -> NAME
+         -> "ALL"
+</code></pre>
+C style comments (both // and /**/) are alowed.
+White spaces and new lines are ignored.<p></p>
+<p>Following is the meaning of each part of the input.</p>
+<div class="table-responsive">
+<table class="table table-bordered table-striped table-condensed">
+	<thead>
+		<tr>
+			<th>Symbol</th>
+			<th>Description</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>NUMBER</td>
+			<td>A decimal number, All the geometric numbers are in unit micrometer.</td>
+		</tr>
+		<tr>
+			<td>NAME</td>
+			<td>The name of a net or block. Can be formed by numbers (not in beginning) letters and underlines.</td>
+		</tr>
+		<tr>
+			<td>Vector2/3</td>
+			<td>A 2/3-D point or vector. All the geometric numbers are in unit micrometer.</td>
+		</tr>
+		<tr>
+			<td>Window</td>
+			<td>The problem's space domain. The point after "v1" is the bottom-left corner and the one after v2 is the top-right corner.</td>
+		</tr>
+		<tr>
+			<td>Boundary</td>
+			<td>The boundary condition of the domain. One of "neumann" and "dirichlet" (default).</td>
+		</tr>
+		<tr>
+			<td>Medium</td>
+			<td>A dielectric layer. the NUMBER after "diel" is the relative permittivity.</td>
+		</tr>
+		<tr>
+			<td>MediumBlock</td>
+			<td>The position of this dielectric layer. Only z-coordinates are used.</td>
+		</tr>
+		<tr>
+			<td>Conductor</td>
+			<td>A net. Formed by one or multiple blocks. If the net is ground, it should be named as "GROUND" and contains only one block. Do not name a net as "ALL".</td>
+		</tr>
+		<tr>
+			<td>Resistivity</td>
+			<td>The resistivity of a net or block. Ignored in capacitance extraction.</td>
+		</tr>
+		<tr>
+			<td>Cuboid</td>
+			<td>A Cuboid. The "basepoint" point is the bottom-left corner, the x-coordinate of "v1" point is the length on x-axis, the y-coordinate of "v2" point is the length on y-axis and the z-coordinate of "hvector" point is the length on z-axis.</td>
+		</tr>
+		<tr>
+			<td>Cylinder</td>
+			<td>A Cylinder. The "basepoint" point is the center and the numbers after "radius" and "height" are the radius and height.</td>
+		</tr>
+		<tr>
+			<td>Prism</td>
+			<td>A Prism. Not supported yet.</td>
+		</tr>
+		<tr>
+			<td>Task</td>
+			<td>The name of the net to extract, or "ALL" to extract all nets.</td>
+		</tr>
+	</tbody>
+</table>

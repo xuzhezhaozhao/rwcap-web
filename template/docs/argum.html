@@ -1,6 +1,7 @@
 <p>Here lists all arguments of rwcap.</p>
 
-<table class="table table-bordered table-striped">
+<div class="table-responsive">
+<table class="table table-bordered table-striped table-condensed">
 	<thead>
 		<tr>
 			<th>Name</th>
@@ -12,33 +13,115 @@
 		<tr>
 			<td>-f</td>
 			<td>None</td>
-			<td>The input file name, required</td>
+			<td>The input file name, required.</td>
 		</tr>
 		<tr>
 			<td>-p</td>
 			<td>None</td>
-			<td>The threshold of relative error of Self capacitance</td>
+			<td>The threshold of relative error of Self capacitance.</td>
+		</tr>
+		<tr>
+			<td>-c</td>
+			<td>""</td>
+			<td>The threshold of relative error of coupling capacitance. *</td>
 		</tr>
 		<tr>
 			<td>-t</td>
 			<td>1000</td>
-			<td>The number of walks for termination</td>
+			<td>The number of walks for termination.</td>
 		</tr>
 		<tr>
 			<td>-n</td>
 			<td>1</td>
-			<td>The number of threads for parallel computing</td>
+			<td>The number of threads for parallel computing.</td>
 		</tr>
 		<tr>
 			<td>-w</td>
 			<td>None</td>
-			<td>The minimum wire width of the process technology</td>
+			<td>The minimum wire width of the process technology.</td>
 		</tr>
-
 		<tr>
-			<td></td>
-			<td></td>
-			<td></td>
+			<td>-o</td>
+			<td>"rwcap.out"</td>
+			<td>The output file name.</td>
+		</tr>
+		<tr>
+			<td>--std-output</td>
+			<td>"enable"</td>
+			<td>Enable or disbale output to stdout.</td>
+		</tr>
+		<tr>
+			<td>--file-output</td>
+			<td>"enable"</td>
+			<td>Enable or disbale output to file.</td>
+		</tr>
+		<tr>
+			<td>--log-level</td>
+			<td>"warn"</td>
+			<td>The lowest level of log, should be one of debug|info|warn|error|disable.</td>
+		</tr>
+		<tr>
+			<td>--log-files</td>
+			<td>""</td>
+			<td>The files for log, should be like "DEBUG,INFO=file1, WARN=file2, ERROR=stderr".</td>
+		</tr>
+		<tr>
+			<td>--ignore-medium</td>
+			<td>None</td>
+			<td>Ignore &lt;medium&gt; field of the input.</td>
+		</tr>
+		<tr>
+			<td>--rewrite-tasks</td>
+			<td>None</td>
+			<td>Override the &lt;task&gt; field of the input.</td>
+		</tr>
+		<tr>
+			<td>--single-table</td>
+			<td>None</td>
+			<td>The path to single dielectric GFTs, override the registered path.</td>
+		</tr>
+		<tr>
+			<td>--twoly-table</td>
+			<td>None</td>
+			<td>The path to medium-dielectric GFTs, override the registered path.</td>
+		</tr>
+		<tr>
+			<td>--spacemgr-type</td>
+			<td>"hybrid"</td>
+			<td>The type of space management structure, should be one of hybrid|octree|ongrid. *</td>
+		</tr>
+		<tr>
+			<td>--spacemgr-candlen</td>
+			<td>20 for hybrid<br/>20 for octree<br/>40 for ongird</td>
+			<td>The max number of blocks in a spacial cell.</td>
+		</tr>
+		<tr>
+			<td>--spacemgr-vector</td>
+			<td>"disable"</td>
+			<td>Speedup the lookup in space management with vectorization.</td>
+		</tr>
+		<tr>
+			<td>--gauss-scale</td>
+			<td>1.2</td>
+			<td>The gauss-scale factor.</td>
+		</tr>
+		<tr>
+			<td>--gauss-type</td>
+			<td>"diel"</td>
+			<td>The sampling PDF on Gaussian surface, should be one of uniform|diel|dist|both.</td>
+		</tr>
+		<tr>
+			<td>--rotated-cube</td>
+			<td>"enable"</td>
+			<td>Rotate the transition domain cube when it's near a non-Manhattan block.</td>
+		</tr>
+		<tr>
+			<td>--as-manhattan</td>
+			<td>0</td>
+			<td>Use square prism to approximate cylinder, should be 0 or 1.</td>
 		</tr>
 	</tbody>
 </table>
+</div>
+* Each coupling threshold should like "net<sub>A</sub> net<sub>B</sub> limit error", which requires: Err<sub>AB</sub>&le;error*max(1, limit*Cap<sub>A</sub>/Cap<sub>AB</sub>).<br/>
+* The refered papers may help to understand arguments about space management, Gaussian surface and non-Manhattan block.<br/>

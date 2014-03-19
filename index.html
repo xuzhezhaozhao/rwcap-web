@@ -2,14 +2,20 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="site">
 	<head>
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link href="asset/s-icon.jpg" rel="shortcut icon" >
+		<meta charset="utf-8"></meta>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+		<meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+		<link href="asset/s-icon.jpg" rel="shortcut icon" ></link>
 
-		<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
-		<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap-theme.min.css" rel="stylesheet">
-		<link href="asset/site.css" rel="stylesheet">
+		<!--
+		<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet"></link>
+		<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap-theme.min.css" rel="stylesheet"></link>
+		-->
+		
+		<link href="lib/bootstrap.min.css" rel="stylesheet"></link>
+		<link href="lib/bootstrap-theme.min.css" rel="stylesheet"></link>
+		
+		<link href="asset/site.css" rel="stylesheet"></link>
 
 		<title>RWCap</title>
 	</head>
@@ -18,11 +24,16 @@
 		<header ng-include="'template/header.html'"></header>
 		<div ng-view id="main-view"></div>
 		<footer ng-include="'template/footer.html'"></footer>
-
+		<!--
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular.min.js"></script>
 		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular-route.min.js"></script>
 		<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+		-->
+		<script src="lib/jquery.min.js"></script>
+		<script src="lib/angular.min.js"></script>
+		<script src="lib/angular-route.min.js"></script>
+		<script src="lib/bootstrap.min.js"></script>
 		<script src="asset/site.js"></script>
 
 	</body>

@@ -8,7 +8,6 @@
 			var t = "template" + p + ".html";
 			pages.push({name: n, path: p, template: t});
 	});
-	pages.home = pages[0];
 
   var site = angular.module("site", ["ngRoute"]);
 
@@ -20,7 +19,7 @@
 		});
 		$routeProvider.
 		otherwise({
-			redirectTo: pages.home.path,
+			redirectTo: "/home",
 		});
 	});
 
@@ -29,7 +28,6 @@
 		$.each(pages, function () {
 			$scope.items.push({active: "", name: this.name, href: this.path});
 		});
-		$scope.home = $scope[0];
 		$scope.active = function (c) {
 			return c == $location.path() ? "active" : "";
 		};
@@ -56,7 +54,7 @@
 		}
 	}
 	site.controller("DocumentCtrl", DocumentCtrl);
-	
+
 	site.directive('scrollSpy', function () {
 		function controller($scope) {
 			var spies = $scope.spies = {};
@@ -113,5 +111,12 @@
 			}
 		};
 	});
+
+	function loadtext(scope, elem, attrs) {
+		$.get(attrs.loadText).success(function (text) {
+			elem.text(text);
+		});
+	}
+	site.directive("loadText", function () { return loadtext; });
 
 })();
