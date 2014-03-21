@@ -1,0 +1,10 @@
+* A sample input for the TechGFT program
+
+.d  2.5 3.7
+.d  3.7 3.2
+.d  3.2 2.5
+
+* '*' starts a comment line
+* .d <down_diel> <up_diel> statement defines a dielectric layer interface
+* down_diel is the relative permittivity (>=1) of dielectric layer below the interface
+* up_diel is the relative permittivity (>=1) of dielectric layer above the interface

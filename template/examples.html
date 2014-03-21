@@ -8,11 +8,36 @@
 	<div class="page-header">
 		<h3>Case 1.</h3>
 		<p>This case only contains a unit cube named cube. We will extract its capacitance.</p>
-		<p>Download the RWCap-solver and the case files (<a href="#/download">here</a>) and unzip them.</p>
-		<p>Open the input file, it looks like this:</p>
-		<pre><code class="xml" load-text="file/cases/cube.cap3d"></code></pre>
-		<p>Run it with <code class="base">rwcap-solver/rwcap -f cases/cube.cap3d -p 0.01</code>
+		<p>Download the RWCap-solver and the case files (<a href="#/download">here</a>) and unzip them.<br/>
+      Open case/cube.cap3d, it looks like this:</p>
+		<pre class="pre-scrollable"><code class="xml" load-text="file/cases/cube.cap3d"></code></pre>
+		<p>Run it with <code class="bash">rwcap-solver/rwcap -f cases/cube.cap3d -p 0.01</code>
+		to get the capacitance with 1-&sigma; error &le; 1%.</p>
+	</div>
+  
+	<div class="page-header">
+		<h3>Case 2.</h3>
+		<p>This case contains two layers of parallel wires.</p>
+		<p>Open case/wires.cap3d, it looks like this:</p>
+		<pre class="pre-scrollable"><code class="xml" load-text="file/cases/wires.cap3d"></code></pre>
+		<p>This is a multi-dielectric case which requires compatible Green's function tables. You need to merge <strong>cases/tables</strong> into <strong>rwcap-solver/tables</strong>.<br/>
+    Then run it with <code class="bash">rwcap-solver/rwcap -f cases/wires.cap3d -p 0.01</code>
 		to get the capacitance with 1-&sigma; error &le; 1%.</p>
 	</div>
 	
+	<div class="page-header">
+		<h3>Case 3.</h3>
+		<p>This time, let's see how to generate the Green's function tables.</p>
+    <p>Download the TechGFT tool (<a href="#/download">here</a>) and unzip it.<br/>
+      Open case/sample.diel_conf, it looks like this:</p>
+		<pre class="pre-scrollable"><code class="xml" load-text="file/cases/sample.diel_conf"></code></pre>
+		<p>Open Matlab and excute <code class="matlab">RunTechGFT.p</code> then input the file name <strong>sample.diel_conf</strong>.<br/>
+      The results would be under <strong>sample_GFT</strong> (same as the input file name) directory.</p>
+    <p>The new generated GFTs should be registered with <code class="bash">rwcap-solver/rwcap --gft &lt;some where&gt;/sample_GFT/</code>. <br/>
+      If you run <code class="bash">rwcap-solver/rwcap -f cases/wires.cap3d -p 0.01</code> again, it now use the new tables.</p>
+	</div>
+  
+  <div>
+    <p>Still having problems using RWCap? Check out our full <a href="#/document">document</a>, or <a href="#/contact">contact</a> us.</p>
+  </div>
 </div>

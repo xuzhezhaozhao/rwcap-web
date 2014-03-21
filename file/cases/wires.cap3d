@@ -1,0 +1,105 @@
+<cap3d>
+  <window>
+    v1 (-20, -20, -20)
+    v2 (20, 20, 20)
+  </window>
+  <medium>
+    <block>
+      basepoint (0, 0, -20)
+      v1 (0, 0, 0)
+      v2 (0, 0, 0)
+      hvector (0, 0, 17)
+    </block>
+    diel 2.5
+  </medium>
+  <medium>
+    <block>
+      basepoint (0, 0, -3)
+      v1 (0, 0, 0)
+      v2 (0, 0, 0)
+      hvector (0, 0, 3)
+    </block>
+    diel 3.7
+  </medium>
+  <medium>
+    <block>
+      basepoint (0, 0, 0)
+      v1 (0, 0, 0)
+      v2 (0, 0, 0)
+      hvector (0, 0, 3)
+    </block>
+    diel 3.2
+  </medium>
+  <medium>
+    <block>
+      basepoint (0, 0, 3)
+      v1 (0, 0, 0)
+      v2 (0, 0, 0)
+      hvector (0, 0, 17)
+    </block>
+    diel 2.5
+  </medium>
+  <conductor>
+    name wire1
+    <block>
+      name wire1blk
+      basepoint (-5, -5, -3)
+      v1 (10, 0, 0)
+      v2 (0, 2, 0)
+      hvector (0, 0, 2)
+    </block>
+  </conductor>
+  <conductor>
+    name wire2
+    <block>
+      name wire2blk
+      basepoint (-5, -1, -3)
+      v1 (10, 0, 0)
+      v2 (0, 2, 0)
+      hvector (0, 0, 2)
+    </block>
+  </conductor>
+  <conductor>
+    name wire3
+    <block>
+      name wire3blk
+      basepoint (-5, 8, -3)
+      v1 (10, 0, 0)
+      v2 (0, 2, 0)
+      hvector (0, 0, 2)
+    </block>
+  </conductor>
+  <conductor>
+    name wire4
+    <block>
+      name wire4blk
+      basepoint (-5, -5, 1)
+      v1 (2, 0, 0)
+      v2 (0, 10, 0)
+      hvector (0, 0, 2)
+    </block>
+  </conductor>
+  <conductor>
+    name wire5
+    <block>
+      name wire5blk
+      basepoint (-1, -5, 1)
+      v1 (2, 0, 0)
+      v2 (0, 10, 0)
+      hvector (0, 0, 2)
+    </block>
+  </conductor>
+  <conductor>
+    name wire6
+    <block>
+      name wire6blk
+      basepoint (8, -5, 1)
+      v1 (2, 0, 0)
+      v2 (0, 10, 0)
+      hvector (0, 0, 2)
+    </block>
+  </conductor>
+  <task><capacitance>
+    wire2
+  </capacitance></task>
+</cap3d>
