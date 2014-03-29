@@ -8,8 +8,7 @@
 	{
 		"name": "TechGFT",
 		"descript": "Process Technology based Green's Function Table generator.",
-		"url": "file/TechGFT.tar.gz",
-		"doc": 1
+		"url": "file/TechGFT.tar.gz"
 	},
 	{
 		"name": "Case File",

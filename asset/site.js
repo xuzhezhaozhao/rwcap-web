@@ -92,12 +92,7 @@
 		return {
 			require: "^scrollSpy",
 			link: function(scope, elem, attrs, require) {
-				elem.click(function () {
-					$location.hash(attrs.spy);
-					$anchorScroll();
-					var e = $(document).height() - $(window).height() - window.scrollY;
-					window.scrollTo(window.scrollX, window.scrollY - Math.min(70, e));
-				});
+				elem.click(function () { scrollto(attrs.spy); });
 				require.addspy(attrs.spy, "spy", elem);
 			}
 		};
@@ -118,5 +113,15 @@
 		});
 	}
 	site.directive("loadText", function () { return loadtext; });
+
+  function scrollto(x) {
+    if ( typeof x == "string" ) x = $("#"+x).offset().top - 70;
+    else if ( typeof x == "object ") x = $(x).offset().top - 70;
+    $(window).scrollTop(x);
+  }
+
+  site.run(function($rootScope) {
+    $rootScope.$on('$routeChangeSuccess', function () { scrollto(0); });
+  });
 
 })();
