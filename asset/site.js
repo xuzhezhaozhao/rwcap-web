@@ -65,7 +65,7 @@
 		}
 		function link(scope, elem, attrs) {
 			$(window).scroll(function () {
-				var active = null, spies = scope.spies;
+				var active = null, spies = scope.spies, bottom = null;
 				for (var id in spies) {
 					var item = spies[id];
 					if ( !item.spy || !item.spied || !item.spied.offset() ) {
@@ -76,10 +76,13 @@
 					if ( pos <= window.scrollY ) {
 						item.pos = pos;
 						if ( !active || active.pos < item.pos ) {
-							active = item
+							active = item;
 						}
 					}
+          if ( !bottom || bottom.pos < pos ) bottom = item;
 				}
+        if ( $(window).height() + $(window).scrollTop() == $(document).height() )
+          active = bottom;
 				if ( active ) {
 					active.spy.addClass("active");
 				}
@@ -92,7 +95,6 @@
 		return {
 			require: "^scrollSpy",
 			link: function(scope, elem, attrs, require) {
-				elem.click(function () { scrollto(attrs.spy); });
 				require.addspy(attrs.spy, "spy", elem);
 			}
 		};
@@ -107,20 +109,26 @@
 		};
 	});
 
-	function loadtext(scope, elem, attrs) {
-		$.get(attrs.loadText).success(function (text) {
-			elem.text(text);
-		});
-	}
-	site.directive("loadText", function () { return loadtext; });
+	site.directive("loadText", function ($http) { 
+    return function (scope, elem, attrs) {
+      $http.get(attrs.loadText).success(function (data) {
+        elem.text(data);
+      });
+    };
+  });
 
-  function scrollto(x) {
-    if ( typeof x == "string" ) x = $("#"+x).offset().top - 70;
-    else if ( typeof x == "object ") x = $(x).offset().top - 70;
-    $(window).scrollTop(x);
+  function scrollto(x, d) {
+    if ( typeof d == "number" ) {
+      setTimeout(function () { scrollto(x); }, d);
+    } else {
+      if ( typeof x == "string" ) x = $("#"+x).offset().top - 70;
+      else if ( typeof x == "object ") x = $(x).offset().top - 70;
+      $(window).scrollTop(x);
+    }
   }
 
   site.run(function($rootScope) {
+    $rootScope.scrollto = scrollto;
     $rootScope.$on('$routeChangeSuccess', function () { scrollto(0); });
   });
 
