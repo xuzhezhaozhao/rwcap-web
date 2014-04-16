@@ -1,6 +1,6 @@
 
 <p>The following is the grammer of input file. You may want to see some <a href="#/examples">examples</a> first.</p>
-<pre><code class="yacc">Cap3DFile -> "&lt;cap3d&gt;" Window Mediums Condutors Tasks "&lt;/cap3d&gt;"
+<pre><code class="yacc">Cap3DFile -> "&lt;cap3d&gt;" Window Mediums Conductors Tasks "&lt;/cap3d&gt;"
 
 Window -> "&lt;window&gt;" "v1" Vector3 "v2" Vector3 Boundary "&lt;/window&gt;"
        -> &lt;empty&gt;
@@ -16,19 +16,17 @@ Boundary -> "dirichlet"
 Mediums -> Medium Mediums
         -> &lt;empty&gt;
 
-Medium -> "&lt;medium&gt;" IgnoredName MediumBlock "diel" NUMBER "&lt;/medium&gt;"
+Medium -> "&lt;medium&gt;" MediumBlock "diel" NUMBER "&lt;/medium&gt;"
 
-IgnoredName -> Name
-            -> &lt;empty&gt;
+MediumBlock -> "&lt;block&gt;" Cuboid "&lt;/block&gt;"
+            -> Cuboid
 
-Name -> "name" NAME
-
-MediumBlock -> "&lt;block&gt;" IgnoredName Cuboid "&lt;/block&gt;"
-
-Condutors -> Conductor Conductors
+Conductors -> Conductor Conductors
           -> &lt;empty&gt;
 
 Conductor -> "&lt;conductor&gt;" Name Blocks Resistivity "&lt;/conductor&gt;"
+
+Name -> "name" NAME
 
 Blocks -> Blocks Block
        -> &lt;empty&gt;
