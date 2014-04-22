@@ -1,0 +1,14 @@
+...
+
+Online Info. Start For Master wire3
+Online Info.     100000 random walks,  master cap:   1.12e-15,  progress 13%
+Online Info.     200000 random walks,  master cap:   1.12e-15,  progress 26%
+Online Info.     300000 random walks,  master cap:   1.12e-15,  progress 40%
+Online Info.     400000 random walks,  master cap:   1.12e-15,  progress 53%
+Online Info.     500000 random walks,  master cap:   1.12e-15,  progress 67%
+Online Info.     600000 random walks,  master cap:   1.12e-15,  progress 80%
+Online Info.     700000 random walks,  master cap:   1.12e-15,  progress 94%
+
+Master wire3 :    1.118e-15F  +/-  5.59e-18F   ( 0.50%)
+
+...

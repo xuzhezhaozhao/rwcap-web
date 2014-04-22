@@ -20,9 +20,14 @@
 		<p>This case contains two layers of parallel wires.</p>
 		<p>Open cases/wires.cap3d, it looks like this:</p>
 		<pre class="pre-scrollable"><code class="xml" load-text="file/cases/wires.cap3d"></code></pre>
-		<p>This is a multi-dielectric case which requires compatible Green's function tables. You need to merge <strong>cases/tables</strong> into <strong>rwcap-solver/tables</strong>.<br/>
-    Then run it with <code class="bash">rwcap-solver/rwcap -f cases/wires.cap3d -p 0.01</code>
-		to get the capacitance with 1-&sigma; error &le; 1%.</p>
+		<p>This is a multi-dielectric case which requires compatible Green's function tables. You need to merge <b>cases/tables</b> into <b>rwcap-solver/tables</b>.<br/>
+    Then run it with <code class="bash">rwcap-solver/rwcap -f cases/wires.cap3d -p 0.005 -o wires.out</code>
+		to get the capacitance of all nets with 1-&sigma; error &le; 0.5%.</p>
+    <p>The result in <b>wires.out</b> looks like this:</p>
+    <pre class="pre-scrollable"><code class="txt" load-text="file/cases/wires.out"></code></pre>
+    <p>For each master net, the line starts with 'Master &lt;name&gt;' shows its self-capacitance and error. Following lines are the coupling capacitance related to this master net.</p>
+    <p>When running, there will be a status line shows current master net's self capacitance and the progress percentage after every 100,000 walks. It looks like this:</p>
+    <pre class="pre-scrollable"><code class="txt" load-text="file/cases/wires.txt"></code></pre>
 	</div>
 
 	<div class="page-header" id="case3">
@@ -31,8 +36,8 @@
     <p>Download the TechGFT tool (<a href="#/download">here</a>) and unzip it.<br/>
       Open cases/sample.diel_conf, it looks like this:</p>
 		<pre class="pre-scrollable"><code class="xml" load-text="file/cases/sample.diel_conf"></code></pre>
-		<p>Open Matlab and excute <code class="matlab">RunTechGFT.p</code> then input the file name <strong>sample.diel_conf</strong>.<br/>
-      The results would be under <strong>sample_GFT</strong> (same as the input file name) directory.</p>
+		<p>Open Matlab and excute <code class="matlab">RunTechGFT.p</code> then input the file name <b>sample.diel_conf</b>.<br/>
+      The results would be under <b>sample_GFT</b> (same as the input file name) directory.</p>
     <p>The new generated GFTs should be registered with <code class="bash">rwcap-solver/rwcap --gft &lt;some where&gt;/sample_GFT/</code>. <br/>
       If you run <code class="bash">rwcap-solver/rwcap -f cases/wires.cap3d -p 0.01</code> again, it now use the new tables.</p>
 	</div>
