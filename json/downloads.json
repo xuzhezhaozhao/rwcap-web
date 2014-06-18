@@ -14,5 +14,15 @@
 		"name": "Case File",
 		"descript": "Case Files used in examples.",
 		"url": "file/cases.tar.gz"
+	},
+	{
+		"name": "RWCap-solver Homogemizated",
+		"descript": "A temporarry branch of rwcap (will be merged in the future). It implements the FRW algorithm with the dielectric homogenization method. The maximul cube transition domain is used in every hop and the dielectric layers contained by the cube are approximated as four equal-thickness layers.",
+		"url": "file/rwcap-homogemizated.tar"
+	},
+	{
+		"name": "Homogemizated Tables",
+		"descript": "Table files use by rwcap homogemizated version",
+		"url": "file/tables-homogemizated.tar.gz"
 	}
 ]
